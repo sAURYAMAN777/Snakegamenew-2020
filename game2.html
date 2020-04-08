@@ -1,7 +1,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-<title>Snake game</title>
+<title>SnakeClassic</title>
     <style>
         body{
             padding: 0;
@@ -84,9 +84,10 @@ window.onload=function() {
     canvas=document.getElementById("sg");
     ctx=canvas.getContext("2d");
     document.addEventListener("keydown",keyPush);
-       var sp=15;
+    var sp=15;
     if(localStorage.sp)
         sp=parseInt(localStorage.sp);
+    setInterval(gamex,1000/sp);
     setInterval(timing,1000/2);
 }
 c=0;var d;    var t=0;
@@ -105,28 +106,28 @@ function gamex() {
   if(flag2==0){  px+=xv;
     py+=yv;
     if(px<0) {
-        tail=5;
+                tail=5;
             if(flag==1){alert("Game Over\nYour score was:-    "+c+"\nTime taken was:- "+m+"m "+s+"s");flag=0;d=new Date();
           if(c>hs){hs=c;localStorage.setItem('m',m);localStorage.setItem('s',s);}
           localStorage.setItem('hs',hs);}
             c=0;window.location.reload();
     }
     if(px>tc-1) {
-        tail=5;
+                tail=5;
             if(flag==1){alert("Game Over\nYour score was:-    "+c+"\nTime taken was:- "+m+"m "+s+"s");flag=0;d=new Date();
           if(c>hs){hs=c;localStorage.setItem('m',m);localStorage.setItem('s',s);}
           localStorage.setItem('hs',hs);}
             c=0;window.location.reload();
     }
     if(py<0) {
-        tail=5;
+                tail=5;
             if(flag==1){alert("Game Over\nYour score was:-    "+c+"\nTime taken was:- "+m+"m "+s+"s");flag=0;d=new Date();
           if(c>hs){hs=c;localStorage.setItem('m',m);localStorage.setItem('s',s);}
           localStorage.setItem('hs',hs);}
             c=0;window.location.reload();
     }
     if(py>tc-1) {
-        tail=5;
+                tail=5;
             if(flag==1){alert("Game Over\nYour score was:-    "+c+"\nTime taken was:- "+m+"m "+s+"s");flag=0;d=new Date();
           if(c>hs){hs=c;localStorage.setItem('m',m);localStorage.setItem('s',s);}
           localStorage.setItem('hs',hs);}
