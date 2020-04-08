@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Snake Game</title>  
+<link href="animate/animate.min.css" rel="stylesheet">
+</head>
+<body>
+<style>
+    body{
+        padding: 0;
+        margin: 0;
+        background-image: url(Snake-Pass.jpg);
+            justify-content: center;
+            align-items: center;
+        font-family: consolas;
+        background-size: cover;
+        color:#fff;
+    }
+    h1{
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width:100%;
+        transform: translate(-50%,-50%);
+        text-align: center;
+        font-size: 4.4em;
+    }
+    span
+    {
+        padding-left: 18px;
+    }
+    h1 span:nth-child(10){
+        animation-duration: 0.5s;
+        animation-delay: 4.5s;
+    }
+    h1 span:nth-child(1){
+         animation-duration: 0.5s;
+        animation-delay: 0.5s;
+    }
+    h1 span:nth-child(2){
+         animation-duration: 0.5s;
+        animation-delay: 1.0s;
+    }
+    h1 span:nth-child(3){
+         animation-duration: 0.5s;
+        animation-delay: 1.5s;
+    }
+    h1 span:nth-child(4){
+         animation-duration: 0.5s;
+        animation-delay: 2.0s;
+    }
+    h1 span:nth-child(5){
+         animation-duration: 0.5s;
+        animation-delay: 2.5s;
+    }
+    h1 span:nth-child(7){
+         animation-duration: 0.5s;
+        animation-delay: 3.0s;
+    }
+    h1 span:nth-child(8){
+         animation-duration: 0.5s;
+        animation-delay: 3.5s;
+    }
+    h1 span:nth-child(9){
+         animation-duration: 0.5s;
+        animation-delay: 4.0s;
+    }
+</style>
+   <h1> 
+    <span class="animated fadeInUp">S</span>
+    <span class="animated fadeInDown">N</span>
+    <span class="animated fadeInUp">A</span>
+    <span class="animated fadeInDown">K</span>
+    <span class="animated fadeInUp">E</span>
+    <span>&nbsp;</span>
+    <span class="animated fadeInDown">G</span>
+    <span class="animated fadeInUp">A</span>
+    <span class="animated fadeInDown">M</span>
+    <span class="animated fadeInUp">E</span>
+    </h1>
+<script>
+    setTimeout(function(){
+    window.location.href="menu.html";},5500);
+</script>
+</body>
+</html>

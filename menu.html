@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Main Menu</title>  
+<link href="animate/animate.min.css" rel="stylesheet">
+</head>
+<body>
+<style>
+    body{
+        padding: 0;
+        margin: 0;
+        background:url(back2.jpg);
+            justify-content: center;
+            align-items: center;
+        background-size: cover;
+        font-family: consolas;
+        transition: 2.0s;
+    }
+    .mmenu{
+        width:300px;
+        height:340px;
+        border: 3px solid #FF0000;
+        border-radius: 6px;
+        background: #FF0000;
+        color: #000;
+        top: 58%;
+        left:50%;
+        position: absolute;
+        transform: translate(-50%,-50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+    }
+    .heading{
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        border-radius: 50%;
+        top: -50px;
+        left: calc(50% - 50px);
+        
+    }
+    h1{
+        margin: 0;
+        padding: 0 0 20px;
+        text-align: center;
+        font-size: 25px;
+    }
+    .mmenu li
+    {
+        margin: 0;
+        padding: 14px;
+        font-weight: 600;
+    }
+    .mmenu a
+    {
+        color: gold;
+    }
+     .mmenu li:hover a
+    {
+        color: black;
+    }
+    .mmenu li:hover
+    {
+        background: cyan;
+        border: 1px solid cyan;
+        border-radius: 2px;
+        margin: 0;
+        padding: 14px;
+        font-weight: 600;
+    }
+    
+    ul li ul li
+    {
+        display: none;
+    }
+    ul li:hover ul li
+    {
+        display: block;
+    }
+</style>
+    <h2 class="animated fadeInUp" style="margin-bottom: 20px; color: #fff;justify-content: center; text-align: center; font-size: 38px;">Welcome to the Snake Game</h2>
+    <div class="mmenu animated zoomIn">
+   <img src="menub.png" class="heading"> 
+        <h1>Main Menu</h1>
+        <ul>
+           <div class="new"><li><a href="#" style="cursor: pointer; color: gold;">Play</a>
+            <ul>
+              <li><a href="game1.html">Classic</a></li>
+              <li><a href="game2.html">Box</a></li>
+            </ul>
+          </li>
+         <li><a href="#" style="cursor: pointer; color: gold;">Difficulty</a>
+            <ul>
+                <li><a href="#">Easy</a></li>
+              <li><a href="#">Medium</a></li>
+              <li><a href="#">Hard</a></li>
+            </ul>
+            </li></div>
+            <li><a href="score.html">High score</a></li>
+            <li><a href="#">Exit</a></li>
+        </ul>
+    </div> 
+<script>
+    var e1=document.getElementsByTagName("a");
+    e1[4].addEventListener("click",f1);
+    e1[5].addEventListener("click",f2);
+    e1[6].addEventListener("click",f3);
+   var a=document.getElementsByTagName("li");
+   a[8].addEventListener("click",ask);
+    function ask()
+    {
+        var c=confirm("Are you sure you want to Quit?");
+        if(c){window.location="exit.html";}
+    }
+    function f1(){
+        var sp=9;
+        localStorage.setItem('sp',sp)
+        alert("Easy has been selected")
+    }
+    function f2(){
+        var sp=15;
+        localStorage.setItem('sp',sp)
+        alert("Medium has been selected")
+    }
+    function f3(){
+        var sp=30
+        localStorage.setItem('sp',sp)
+        alert("Hard has been selected")
+    }
+</script>
+</body>
+</html>

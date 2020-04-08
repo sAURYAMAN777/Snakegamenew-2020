@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Score</title>  
+<link href="animate/animate.min.css" rel="stylesheet">
+</head>
+<body>
+<style>
+    body{
+        padding: 0;
+        margin: 0;
+        background:url(hqdefault.jpg);
+            justify-content: center;
+            align-items: center;
+        background-size: cover;
+        font-family: consolas;
+        transition: 2.0s;
+    }
+    .mmenu{
+        width:550px;
+        height:290px;
+        border: 3px solid rgba(0,0,0,0.5);
+        border-radius: 6px;
+        background: rgba(0,0,0,0.5);
+        color: gold;
+        top: 58%;
+        left:50%;
+        position: absolute;
+        transform: translate(-50%,-50%);
+        box-sizing: border-box;
+        padding: 30px 30px;
+    }
+    .heading{
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        border-radius: 50%;
+        top: -50px;
+        left: calc(50% - 50px);
+        
+    }
+    h1{
+        margin-bottom: 24px;
+        padding: 0 0 20px;
+        text-align: center;
+        font-size: 25px;
+    }
+
+</style>
+    <a href="menu.html"><img src="goback.png" height="100" width="100" style="position: absolute;top: 40px;left:40px;"></a>
+    <h2 class="animated fadeInUp" style="margin-bottom: 20px; color: #fff;justify-content: center; text-align: center; font-size: 38px;">Highest Score</h2>
+    <div class="mmenu animated zoomIn">
+        <h1>Score and time taken</h1>
+        <div style="justify-content: center;text-align: center;"><b>Highest score</b><b style="margin-left: 65px;margin-right: 65px;"></b><b>Time taken</b></div><br>
+        <div style="justify-content: center;text-align: center;"><b></b><b style="margin-left: 65px;margin-right: 65px;"></b><b style="transform: translateX(50px);"></b></div>
+    </div> 
+<script>
+    var e=document.getElementsByTagName("b");
+    var hs=0;var m=0;var s=0;
+                  if(localStorage.hs)
+          hs=parseInt(localStorage.hs);
+                  if(localStorage.m)
+          m=parseInt(localStorage.m);
+                  if(localStorage.s)
+          s=parseInt(localStorage.s);
+    e[3].innerHTML=hs;
+    e[5].innerHTML=m+"min "+s+"sec";
+</script>
+</body>
+</html>

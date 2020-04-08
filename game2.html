@@ -1,0 +1,214 @@
+<html>
+<head>
+  <meta charset="utf-8">
+<title>Snake game</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url("back.gif") ;
+            background-size: cover;
+            color: #000;
+            font-family: consolas;
+        }
+.instructions
+        {
+           /* position: fixed;
+            right:10%;
+            top:7%;*/
+            border: #FFA07A;
+            border-radius: 8px;
+            transform: translateY(-90px);
+            transform: translateX(50px);
+            height:190px;
+            width:160px;
+            background: #FFA07A;
+        }
+
+.board div{
+
+margin-bottom: 50px;            
+}
+        
+.board > div{
+    padding: 4px;
+    border-radius: 3px;
+    background: gold;
+    display: block;
+}
+.board div > span{
+    padding: 7px;
+    border-radius: 3px;
+    background: #C0C0C0;
+    display: inline-block;
+}
+
+.smalltext{
+    padding-top: 3px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+}
+    </style>
+</head>
+<body><a href="menu.html" title="Back To Main Menu">
+    <img src="goback.png" height="100px" width="100px" style="transform: translate(30px,-195px)"></a><br>
+   <img src="pause.png" height="69px" width="69px" style="transform: translate(-30px,-80px);cursor: pointer;">
+<canvas id="sg" height="484" width="484" style="max-width: 100%; border: 6px solid #FFA07A ;border-radius: 5px; margin: 40px;transform: translateX(20px);"></canvas>
+    <div class="board"> 
+    <div style="justify-content: center;align-content: center;text-align: center;">
+    <div class="smalltext" style="margin-bottom: 23px;">Score</div>
+    <span id="days" style="height: 40px;width:50px;font-size: 30px;"></span>
+  </div>
+  <div style="justify-content: center;align-content: center;text-align: center;">
+    <div class="smalltext" style="margin-bottom: 23px;">Time</div>
+    <span id="hours" style="height: 40px;width:70px;"></span>
+  </div>
+  <div style="justify-content: center;align-content: center;text-align: center;">
+    <div class="smalltext" style="margin-bottom: 23px;">High Score</div>
+    <span id="minutes" style="height: 40px;width:50px;"></span>
+  </div>
+    </div>  
+    
+ <div class="instructions">
+<p style="text-align: center;">&#42;This is designed as the classic mode of Snake.Don&#39;t eat yourself and you are good to go.Also don&#39;t go in reverse direction</p>    
+</div>
+<script>
+window.onload=function() {
+    canvas=document.getElementById("sg");
+    ctx=canvas.getContext("2d");
+    document.addEventListener("keydown",keyPush);
+       var sp=15;
+    if(localStorage.sp)
+        sp=parseInt(localStorage.sp);
+    setInterval(timing,1000/2);
+}
+c=0;var d;    var t=0;
+flag=0;hs=0;
+flag2=0;
+flag3=0;
+px=py=11;
+gs=tc=22;
+ax=ay=15;
+xv=yv=0;
+trail=[];
+tail = 5;
+function gamex() {
+              if(localStorage.hs)
+          hs=parseInt(localStorage.hs);
+  if(flag2==0){  px+=xv;
+    py+=yv;
+    if(px<0) {
+        tail=5;
+            if(flag==1){alert("Game Over\nYour score was:-    "+c+"\nTime taken was:- "+m+"m "+s+"s");flag=0;d=new Date();
+          if(c>hs){hs=c;localStorage.setItem('m',m);localStorage.setItem('s',s);}
+          localStorage.setItem('hs',hs);}
+            c=0;window.location.reload();
+    }
+    if(px>tc-1) {
+        tail=5;
+            if(flag==1){alert("Game Over\nYour score was:-    "+c+"\nTime taken was:- "+m+"m "+s+"s");flag=0;d=new Date();
+          if(c>hs){hs=c;localStorage.setItem('m',m);localStorage.setItem('s',s);}
+          localStorage.setItem('hs',hs);}
+            c=0;window.location.reload();
+    }
+    if(py<0) {
+        tail=5;
+            if(flag==1){alert("Game Over\nYour score was:-    "+c+"\nTime taken was:- "+m+"m "+s+"s");flag=0;d=new Date();
+          if(c>hs){hs=c;localStorage.setItem('m',m);localStorage.setItem('s',s);}
+          localStorage.setItem('hs',hs);}
+            c=0;window.location.reload();
+    }
+    if(py>tc-1) {
+        tail=5;
+            if(flag==1){alert("Game Over\nYour score was:-    "+c+"\nTime taken was:- "+m+"m "+s+"s");flag=0;d=new Date();
+          if(c>hs){hs=c;localStorage.setItem('m',m);localStorage.setItem('s',s);}
+          localStorage.setItem('hs',hs);}
+            c=0;window.location.reload();
+    }
+    ctx.fillStyle="black";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    for(var i=0;i<trail.length;i++) {
+         /*   ctx.arc(trail[i].x*gs,trail[i].y*gs,9,0,2*Math.PI)
+            ctx.fillStyle="#FFA500";
+            ctx.fill();*/
+        
+        ctx.fillStyle="#FFA500";
+        ctx.fillRect(trail[i].x*gs,trail[i].y*gs,20-1,20-2);
+        if(trail[i].x==px && trail[i].y==py) {
+                    ctx.fillStyle="#FFA500";
+        ctx.fillRect(trail[i].x*gs,trail[i].y*gs,20-1,20-2);
+            tail=5;
+            if(flag==1){alert("Game Over\nYour score was:-    "+c+"\nTime taken was:- "+m+"m "+s+"s");flag=0;d=new Date();
+          if(c>hs){hs=c;localStorage.setItem('m',m);localStorage.setItem('s',s);}
+          localStorage.setItem('hs',hs);}
+            c=0;
+        }
+    }
+    trail.push({x:px,y:py});
+    while(trail.length>tail) {
+    trail.shift();
+    }
+ 
+    if(ax==px && ay==py) {
+        tail++;c++;
+        ax=Math.floor(Math.random()*tc);
+        ay=Math.floor(Math.random()*tc);
+    }
+  /*  ctx.drawImage(img,ax*gs,ay*gs,20,20);*/
+    ctx.fillStyle="red";
+    
+   ctx.fillRect(ax*gs,ay*gs,23-1,23-1);
+   var a= document.getElementsByTagName("span");
+//    a.style.fontSize="20px";
+    a[0].innerHTML=c;}
+    var x=document.getElementsByTagName("span");
+    x[2].innerHTML=hs
+    var n=document.getElementsByTagName("img");
+    if(flag3==0)
+    n[1].addEventListener("click",function(){var n2=document.getElementsByTagName("img");
+    n2[1].src="play2.png";   
+    flag2=1;
+    flag3=1;});
+    else
+    n[1].addEventListener("click",function(){ var n3=document.getElementsByTagName("img");
+    n3[1].src="pause.png";   
+    flag2=0;
+    flag3=0;});
+}
+function keyPush(evt) {
+    if(flag==0)
+    d=new Date();
+    flag=1;
+    switch(evt.keyCode) {
+        case 37:
+            xv=-1;yv=0;
+            break;
+        case 38:
+            xv=0;yv=-1;
+            break;
+        case 39:
+            xv=1;yv=0;
+            break;
+        case 40:
+            xv=0;yv=1;
+            break;
+    }
+}
+function timing(){
+    if(d)
+        t=Date.parse(new Date()) - Date.parse(d);
+    var time=document.getElementsByTagName("span");
+    t=t/1000;
+    m=Math.floor(t/60);
+    s=t%60;
+    time[1].innerHTML=m+"m "+s+"s";
+}
+</script>
+</body></html>
